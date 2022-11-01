@@ -1,0 +1,12 @@
+PRAGMA FOREIGN_KEYS = ON;
+
+DROP TABLE IF EXISTS Teste;
+CREATE TABLE Teste (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL
+);
+
+INSERT INTO Teste (nome) VALUES ("NomeTeste");
+INSERT INTO Teste (nome) VALUES ("NomeTeste2");
+
+-- SELECT * FROM Teste;

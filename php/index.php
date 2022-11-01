@@ -12,22 +12,17 @@
 </head>
 
 <body>
-    <div id="header">
-        <img src="../img/Clinica Hsucesso-Logo.svg" alt="Logo_Hsucesso">
-        <div id="abas">
-            <a id="login" href="./login.php">LOGIN</a>
-            <a id="contatos" href="./contatos.php">CONTATOS</a>
-        </div>
-        <nav>
-            <a href="./exames.php">EXAMES</a>
-            <a href="./resultados.php">RESULTADOS</a>
-            <a href="./convenios.php">CONVÊNIOS</a>
-        </nav>
-    </div>
+    <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <button>Hello</button>
         <?php
-        //só usa pra forms
+        $db = new SQLite3("../db/hsucesso.db");
+        $db->exec("PRAGMA foreign_keys = ON");
+        $results = $db->query("SELECT * FROM Teste");
+        while ($row = $results->fetchArray()) {
+            var_dump($row);
+        }
+        $db->close();
         ?>
     </div>
 </body>
