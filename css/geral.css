@@ -1,5 +1,14 @@
 @import url("./variaveis.css");
 
+:root {
+    font-family: "Open Sans", sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* HEADER: */
 #header {
     width: 100%;
     background-color: var(--sec);
@@ -17,7 +26,6 @@
 }
 
 #abas {
-    width: 20%;
     height: min-content;
     display: flex;
     justify-content: space-around;
@@ -25,10 +33,13 @@
 
 #abas>a {
     height: fit-content;
+    margin-left: 1rem;
+    margin-right: 1rem;
     border-radius: 0 0 5px 5px;
     padding: 1rem;
     background-color: var(--main);
     color: white;
+    display: flex;
 }
 
 #abas>img {
@@ -44,20 +55,59 @@ nav {
     padding-bottom: 1rem;
 }
 
-nav>* {
-    padding: .5rem;
-    align-self: center;
-    transition: outline .2s linear;
+nav>a {
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  box-sizing: content-box;
+  border: 2px solid transparent;
 }
 
-nav>*:hover {
-    outline: var(--main) solid 2px;
-    color: var(--main);
+nav>a::before, nav>a::after {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
 }
 
+nav>a::before {
+    top: -4px;
+    left: -4px;
+    border-top: 3px solid var(--main);
+    border-left: 3px solid var(--main);
+    transition: 0.5s all;
+}
+
+nav>a::after {
+    bottom: -4px;
+    right: -4px;
+    border-bottom: 3px solid var(--main);
+    border-right: 3px solid var(--main);
+    transition: 0.5s all;
+}
+
+nav>a:hover::before, nav>a:hover::after {
+    width: 102%;
+    height: 111%;
+}
+ /* FIM DO HEADER */
+
+/* COMEÇO DO WRAPPER */
 #wrapper {
-    margin: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    padding: 2rem;
 }
+
+
+
+
+
+
+/* Linha de centralização */
+/* hr {
+    background-color: red;
+    height: 100%;
+    width: 4px;
+    position: fixed;
+} */
