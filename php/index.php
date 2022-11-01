@@ -14,14 +14,29 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <button>Hello</button>
+        <h3>Tabela importada do banco com PHP:</h3>
         <?php
         $db = new SQLite3("../db/hsucesso.db");
         $db->exec("PRAGMA foreign_keys = ON");
         $results = $db->query("SELECT * FROM Teste");
+        echo '
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+            </tr>
+        ';
         while ($row = $results->fetchArray()) {
-            var_dump($row);
+            echo '
+            <tr>
+                <td>' . $row["id"] . '</td>
+                <td>' . $row["nome"] . '</td>
+                <td>' . $row["cpf"] . '</td>
+            </tr>
+            ';
         }
+        echo '</table>';
         $db->close();
         ?>
     </div>
