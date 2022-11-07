@@ -1,8 +1,11 @@
 <div id="header">
-    <img src="../img/Clinica Hsucesso-Logo.svg" alt="Logo_Hsucesso">
-    <div id="abas">
-        <a id="login" href="./login.php">LOGIN</a>
-        <a id="contatos" href="./contatos.php">CONTATOS</a>
+    <div id="box">
+        <img src="../img/Clinica Hsucesso-Logo.svg" alt="Logo_Hsucesso">
+        <h1>Clínica Hsucesso</h1>
+        <div id="abas">
+            <a id="login" href="./login.php">LOGIN</a>
+            <a id="contatos" href="./contatos.php">CONTATOS</a>
+        </div>
     </div>
     <nav>
         <a href="./exames.php">EXAMES</a>
