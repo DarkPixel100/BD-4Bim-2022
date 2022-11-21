@@ -1,4 +1,6 @@
 :root {
     --main: #9b4dca;
-    --sec : #E1D5E7;
+    --mainFocus: #8634b9;
+    --sec : #debfff;
+    /* --sec : #E1D5E7; */
 }

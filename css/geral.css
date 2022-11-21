@@ -1,8 +1,14 @@
 @import url("./variaveis.css");
 
+/* * {
+  min-width: unset !important;
+  outline: red 1px solid;
+} */
+
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 /* HEADER: */
@@ -12,9 +18,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-inline: 3rem;
   border-top: 3px solid var(--main);
   border-bottom: 5px solid var(--main);
+  padding: 0 3rem 1rem 3rem;
 }
 
 #box {
@@ -22,6 +28,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #box > h1 {
@@ -33,7 +40,7 @@ body {
 }
 
 #box > img {
-  max-width: 10%;
+  max-width: 15vw;
   margin-top: 1.5rem;
 }
 
@@ -114,6 +121,7 @@ nav > a:hover::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 } 
 
 #inicio {
@@ -127,6 +135,7 @@ nav > a:hover::after {
   flex-direction: column;
   align-items: center;
   color: var(--main);
+  /* margin-bottom: 5vw; */
 }
 /* Linha de centralização */
 /* hr {
@@ -135,3 +144,71 @@ nav > a:hover::after {
     width: 4px;
     position: fixed;
 } */
+#caixas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 4rem;
+  margin-block: 2rem;
+}
+
+#caixas > div{
+  background-color: var(--main);
+  color: white;
+  border-radius: 5px;
+  padding: 3rem;
+}
+
+#fotosLocal {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem;
+  margin-block: 2rem;
+}
+
+#fotosLocal > div {
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#fotosLocal > img {
+  max-width: 50%;
+  border: 5px solid var(--main);
+  cursor: pointer;
+}
+
+#fotosLocal > img:hover {
+  border: 5px solid #c76dff;
+  opacity: 0.9;
+}
+
+#fotosLocal > h3 {
+  margin-bottom: .3em;
+  text-align: center;
+}
+
+#fotosLocal > p {
+  max-width: 70%;
+}
+
+@media screen and (max-width: 870px){
+  #abas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #abas > a {
+    border-radius: 5px;
+  }
+
+  #caixas {
+    grid-template-columns: unset;
+  }
+
+  #fotosLocal {
+    grid-template-columns: unset;
+  }
+}
