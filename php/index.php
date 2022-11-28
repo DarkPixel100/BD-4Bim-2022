@@ -19,20 +19,26 @@
             <p>HORÁRIO DE COLETAS:<br>Unidade Matriz - Rio Grande: 07hs às 17:30h - sáb. 7hs às 11:30hs<br>Unidade Filial - São José do Norte: Seg a Sex das 07:00 as 10:00 (não abre aos sábados)</p>
         </div>
         <div id="caixas">
-            <div>
-                <h2>Resultados</h2>
-                <p>
-                    Você será informado via SMS, quando os resultados dos seus exames já estiverem disponíveis em nosso site.
-                </p>
-            </div>
-            <div>
-                <h2> Agendamento </h2>
-                <p> Agende sua consulta de maneira on-line</p>
-            </div>
-            <div>
-                <h2> Exames </h2>
-                <p> Escolha uma das opções de exames disponíveis </p>
-            </div>
+            <a href="./results.php">
+                <div>
+                    <h2>Resultados</h2>
+                    <p>
+                        Você será informado via SMS, quando os resultados dos seus exames já estiverem disponíveis em nosso site.
+                    </p>
+                </div>
+            </a>
+            <a href="./agenda.php">
+                <div>
+                    <h2> Agendamento </h2>
+                    <p> Agende sua consulta de maneira on-line</p>
+                </div>
+            </a>
+            <a href="./exames.php">
+                <div>
+                    <h2> Exames </h2>
+                    <p> Escolha uma das opções de exames disponíveis </p>
+                </div>
+            </a>
         </div>
         <h2>Sempre perto de você</h2>
         <p>Estamos evoluindo sempre, focados no bem estar dos nossos clientes, buscando proporcionar o carinho e conforto a que todos merecem</p>
@@ -53,7 +59,9 @@
                 <p>Espaço personalizado para agradar e entreter as crianças.</p>
             </div>
         </div>
-        
+        <div id="footer">
+            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
+        </div>
         <!-- <h3>Tabela importada do banco com PHP:</h3>
         <?php
         $db = new SQLite3("../db/hsucesso.db");
