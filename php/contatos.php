@@ -13,6 +13,13 @@
 
 <body>
     <?php include './header_inc.php'; ?>
+    <div id="wrapper">
+        <h2>Entre em contato com nós:</h2>
+        
+        <div id="footer">
+            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
+        </div>
+    </div>
 </body>
 
 </html>

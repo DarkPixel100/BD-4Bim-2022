@@ -26,6 +26,9 @@
                 <input type="checkbox" checked="checked" name="remember">  Lembre-me</input>
             </label>
         </div>
+        <div id="footer">
+            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
+        </div>
     </div>
 </body>
 

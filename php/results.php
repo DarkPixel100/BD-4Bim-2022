@@ -13,6 +13,25 @@
 
 <body>
     <?php include './header_inc.php'; ?>
+    <div id="wrapper">
+        <div id="resultados">
+            <h2>Resultados:</h2>
+            <br>
+            <span>Para acessar os resultados de exames, faça seu login e clique no botão abaixo:</span>
+            <div id="loginContainer">
+                <label for="user"><b>Usuário:</b></label>
+                <input type="text" placeholder="Digite o usuário" name="user" required>
+
+                <label for="senha"><b>Senha:</b></label>
+                <input type="password" placeholder="Digite a senha" name="senha" required>
+
+                <button type="submit">Acessar</button>
+            </div>
+        </div>
+        <div id="footer">
+            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
+        </div>
+    </div>
 </body>
 
 </html>
