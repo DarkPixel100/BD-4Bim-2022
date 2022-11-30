@@ -15,10 +15,8 @@
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <h2>Exames:</h2>
-        <div id="footer">
-            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
-        </div>
     </div>
+    <?php include './footer_inc.php'; ?>
 </body>
 
 </html>

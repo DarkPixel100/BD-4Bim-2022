@@ -9,27 +9,15 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <div id="loginContainer">
-            <label for="user"><b>Usuário:</b></label>
-            <input type="text" placeholder="Digite o usuário" name="user" required>
-
-            <label for="senha"><b>Senha:</b></label>
-            <input type="password" placeholder="Digite a senha" name="senha" required>
-
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember">  Lembre-me</input>
-            </label>
-        </div>
-        <div id="footer">
-            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
-        </div>
+        <?php include './loginContainer_inc.php'; ?>
     </div>
+    <?php include './footer_inc.php'; ?>
 </body>
 
 </html>

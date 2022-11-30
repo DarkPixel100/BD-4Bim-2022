@@ -13,6 +13,10 @@
 
 <body>
     <?php include './header_inc.php'; ?>
+    <div id="wraper">
+
+    </div>
+    <?php include './footer_inc.php'; ?>
 </body>
 
 </html>

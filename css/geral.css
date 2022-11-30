@@ -65,6 +65,14 @@ body {
   max-width: 10%;
 }
 
+/* Linha de centralização */
+/* hr {
+    background-color: red;
+    height: 100%;
+    width: 4px;
+    position: fixed;
+} */
+
 nav {
   width: 100%;
   height: max-content;
@@ -122,86 +130,18 @@ nav > a:hover::after {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-} 
-
-#inicio {
-  width: fit-content;
-  padding: 5px;
-  font-family: "Open Sans", sans-serif;
-  margin: 10px;
-  border: 2px solid var(--main);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--main);
-  /* margin-bottom: 5vw; */
-}
-/* Linha de centralização */
-/* hr {
-    background-color: red;
-    height: 100%;
-    width: 4px;
-    position: fixed;
-} */
-#caixas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 4rem;
-  margin-block: 4rem;
 }
 
-#caixas a{
-  background-color: var(--main);
-  color: white;
-  border-radius: 5px;
-  padding: 3rem;
-}
-
-#caixas a:hover {
-  background-color: var(--mainFocus);
-}
-
-#fotosLocal {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 3rem;
-  margin-block: 4rem;
-}
-
-#fotosLocal > div {
-  /* margin: auto; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#fotosLocal > img {
-  max-width: 50%;
-  border: 5px solid var(--main);
-  cursor: pointer;
-}
-
-#fotosLocal h3 {
-  margin-top: .6em;
-  text-align: center;
-}
-
-#fotosLocal > p {
-  margin-block: .4em;
-  max-width: 70%;
-}
-
-#loginContainer {
-  border: 3px solid var(--mainFocus);
-  border-radius: 5px;
-  padding: 2rem;
-}
-
-#footer{
-  text-align: center;
+#footer {
+  width: 100%;
   background-color: var(--sec);
-  width: 100vw;
+  text-align: center;
+}
+
+#footer > h3 {
+  font-size: 16pt;
+  line-height: 1;
+  margin-block: 1rem;
 }
 
 @media screen and (max-width: 870px){
@@ -214,12 +154,7 @@ nav > a:hover::after {
   #abas > a {
     border-radius: 5px;
   }
-
-  #caixas {
-    grid-template-columns: unset;
-  }
-
-  #fotosLocal {
-    grid-template-columns: unset;
-  }
+    #footer > h3 {
+      font-size: 10pt;
+    }
 }

@@ -18,10 +18,8 @@
         <div id="fotosLocal">
             <img src="../img/saudecaixa.png" alt="">
         </div>
-        <div id="footer">
-            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
-        </div>
     </div>
+    <?php include './footer_inc.php'; ?>
 </body>
 
 </html>

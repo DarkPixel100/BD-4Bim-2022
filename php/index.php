@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
@@ -59,9 +60,6 @@
                 <p>Espaço personalizado para agradar e entreter as crianças.</p>
             </div>
         </div>
-        <div id="footer">
-            <h3> Clínica Hsucesso - Copyright © 2022 - Todos os direitos reservados </h3>
-        </div>
         <!-- <h3>Tabela importada do banco com PHP:</h3>
         <?php
         $db = new SQLite3("../db/hsucesso.db");
@@ -88,6 +86,7 @@
         $db->close();
         ?> -->
     </div>
+    <?php include './footer_inc.php'; ?>
 </body>
 
 </html>
