@@ -18,7 +18,10 @@
             <h2>Resultados:</h2>
             <br>
             <span>Para acessar os resultados de exames, faça seu login e clique no botão abaixo:</span>
-            <?php include './loginContainer_inc.php'; ?>
+            <?php
+            if (!isset($_SESSION)) echo "aaa";
+            // if (!$_SESSION) header("Location: ./login.php?resultados");
+            ?>
         </div>
     </div>
     <?php include './footer_inc.php'; ?>

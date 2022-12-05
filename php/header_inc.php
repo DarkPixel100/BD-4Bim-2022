@@ -5,11 +5,14 @@
         <div id="abas">
             <a id="login" href="./login.php">LOGIN</a>
             <a id="contatos" href="./contatos.php">CONTATOS</a>
+            <?php
+                
+            ?>
         </div>
     </div>
     <nav>
         <a href="./exames.php">EXAMES</a>
-        <a href="./results.php">RESULTADOS</a>
+        <a href="./resultados.php">RESULTADOS</a>
         <a href="./convenio.php">CONVÊNIOS</a>
     </nav>
 </div>

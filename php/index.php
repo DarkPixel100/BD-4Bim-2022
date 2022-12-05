@@ -20,7 +20,7 @@
             <p>HORÁRIO DE COLETAS:<br>Unidade Matriz - Rio Grande: 07hs às 17:30h - sáb. 7hs às 11:30hs<br>Unidade Filial - São José do Norte: Seg a Sex das 07:00 as 10:00 (não abre aos sábados)</p>
         </div>
         <div id="caixas">
-            <a href="./results.php">
+            <a href="./resultados.php">
                 <div>
                     <h2>Resultados</h2>
                     <p>
