@@ -60,7 +60,7 @@
                 <p>Espaço personalizado para agradar e entreter as crianças.</p>
             </div>
         </div>
-        <!-- <h3>Tabela importada do banco com PHP:</h3>
+        <h3>Tabela importada do banco com PHP:</h3>
         <?php
         $db = new SQLite3("../db/hsucesso.db");
         $db->exec("PRAGMA foreign_keys = ON");
@@ -84,7 +84,7 @@
         }
         echo '</table>';
         $db->close();
-        ?> -->
+        ?>
     </div>
     <?php include './footer_inc.php'; ?>
 </body>

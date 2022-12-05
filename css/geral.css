@@ -33,15 +33,16 @@ body {
 
 #box > h1 {
   align-self: center;
-  padding: 10px;
+  padding: 1rem 10px 10px 10px;
+  margin: 0;
   color: var(--main);
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
 }
 
-#box > img {
+#box > a {
   max-width: 15vw;
-  margin-top: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 #abas {
@@ -145,6 +146,9 @@ nav > a:hover::after {
 }
 
 @media screen and (max-width: 870px){
+  #box {
+    justify-content: center;
+  }
   #abas {
     width: 100%;
     display: flex;
