@@ -9,12 +9,22 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/variaveis.css">
 </head>
 
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <h2>Entre em contato com nós:</h2>
+    <h2>Entre em contato com nós:</h2>
+        <div id="loginContainer">    
+        <b><span>Email:</span></b>
+        <a href="Clinica.Hsucesso@gmail.com">Clinica.Hsucesso@gmail.com</a> <br>
+        <b><span>Endereço:</span></b> 
+        <a href="google.maps">Av. Villa Braga Machado</a><br>
+        <b><span>Telefone:</span></b>
+        <a href="zapzap">(53)999742069</a></div>
     </div>
     <?php
     include './footer_inc.php';

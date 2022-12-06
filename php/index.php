@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/variaveis.css">
 </head>
 
 <body>
