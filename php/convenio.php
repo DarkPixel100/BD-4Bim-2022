@@ -19,7 +19,10 @@
             <img src="../img/saudecaixa.png" alt="">
         </div>
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    exit();
+    ?>
 </body>
 
 </html>

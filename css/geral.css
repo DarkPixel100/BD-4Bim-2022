@@ -31,7 +31,7 @@ body {
   flex-wrap: wrap;
 }
 
-#box > h1 {
+#box>h1 {
   align-self: center;
   padding: 1rem 10px 10px 10px;
   margin: 0;
@@ -40,7 +40,7 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-#box > a {
+#box>a {
   max-width: 15vw;
   padding-top: 1.5rem;
 }
@@ -51,7 +51,7 @@ body {
   justify-content: space-around;
 }
 
-#abas > a {
+#abas>a {
   height: fit-content;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -62,7 +62,7 @@ body {
   display: flex;
 }
 
-#abas > img {
+#abas>img {
   max-width: 10%;
 }
 
@@ -83,7 +83,7 @@ nav {
   padding-bottom: 1rem;
 }
 
-nav > a {
+nav>a {
   padding: 1rem;
   text-align: center;
   position: relative;
@@ -91,8 +91,8 @@ nav > a {
   border: 2px solid transparent;
 }
 
-nav > a::before,
-nav > a::after {
+nav>a::before,
+nav>a::after {
   display: block;
   content: "";
   width: 20px;
@@ -100,7 +100,7 @@ nav > a::after {
   position: absolute;
 }
 
-nav > a::before {
+nav>a::before {
   top: -4px;
   left: -4px;
   border-top: 3px solid var(--main);
@@ -108,7 +108,7 @@ nav > a::before {
   transition: 0.5s all;
 }
 
-nav > a::after {
+nav>a::after {
   bottom: -4px;
   right: -4px;
   border-bottom: 3px solid var(--main);
@@ -116,11 +116,12 @@ nav > a::after {
   transition: 0.5s all;
 }
 
-nav > a:hover::before,
-nav > a:hover::after {
+nav>a:hover::before,
+nav>a:hover::after {
   width: 102%;
   height: 111%;
 }
+
 /* FIM DO HEADER */
 
 /* COMEÇO DO WRAPPER */
@@ -139,26 +140,28 @@ nav > a:hover::after {
   text-align: center;
 }
 
-#footer > h3 {
+#footer>h3 {
   font-size: 16pt;
   line-height: 1;
   margin-block: 1rem;
 }
 
-@media screen and (max-width: 870px){
+@media screen and (max-width: 870px) {
   #box {
     justify-content: center;
   }
+
   #abas {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  #abas > a {
+  #abas>a {
     border-radius: 5px;
   }
-    #footer > h3 {
-      font-size: 10pt;
-    }
+
+  #footer>h3 {
+    font-size: 10pt;
+  }
 }

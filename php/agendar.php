@@ -16,7 +16,10 @@
     <div id="wraper">
 
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    exit();
+    ?>
 </body>
 
 </html>

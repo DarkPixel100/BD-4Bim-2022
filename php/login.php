@@ -15,31 +15,6 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <?php
-        $username = $_POST["user"];
-        $password = $_POST["senha"];
-        $db = new SQLite3("../db/hsucesso.db");
-        $db->exec("PRAGMA foreign_keys = ON");
-        $userResults = $db->query("SELECT * FROM UserData");
-        while ($row = $userResults->fetchArray()) {
-            if ($row["username"] == $username && $row["password"] == $password) {
-                echo "aaa";
-                session_start(
-                    ["cookie_lifetime" => 600000]
-                );
-                $_SESSION["currentUserID"] = $row["id"];
-                if (isset($_POST["location"])) {
-                    header("Location: " . $_POST["location"]);
-                } else {
-                    header("Location: ./index.php");
-                }
-                break;
-            }
-        }
-        /*if (!isset($_SESSION)) {
-            $output = "Error";
-          }*/
-        ?>
         <form id="loginContainer" method="POST" action="">
             <label for="user"><b>Usuário:</b></label>
             <input type="text" placeholder="Digite o usuário" name="user" required>
@@ -47,13 +22,41 @@
             <label for="senha"><b>Senha:</b></label>
             <input type="password" placeholder="Digite a senha" name="senha" required>
 
+            <input type="checkbox" name="remember"> <b>Lembre-me</b></input>
+            <br>
             <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Lembre-me</input>
-            </label>
         </form>
+        <?php
+        if (!empty($_POST)) {
+            $username = $_POST["user"];
+            $password = $_POST["senha"];
+            $db = new SQLite3("../db/hsucesso.db");
+            $db->exec("PRAGMA foreign_keys = ON");
+            $userResults = $db->query("SELECT * FROM UserData");
+            while ($row = $userResults->fetchArray()) {
+                if ($row["username"] == $username && $row["password"] == $password) {
+                    if (!isset($_POST["remember"])) {
+                        $_SESSION["lifeTime"] = 600;
+                    }
+                    session_start();
+                    $_SESSION["startTime"] = time();
+                    $_SESSION["currentUserID"] = $row["id"];
+                    $_SESSION["currentUserName"] = $row["username"];
+                    if (isset($_GET["r"])) {
+                        header("Location: " . $_GET["r"] . ".php");
+                    } else {
+                        header("Location: ./index.php");
+                    }
+                    break;
+                }
+            }
+        }
+        ?>
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    exit();
+    ?>
 </body>
 
 </html>

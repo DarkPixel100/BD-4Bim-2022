@@ -28,16 +28,20 @@
                     </p>
                 </div>
             </a>
-            <a href="./agenda.php">
+            <a href="./agendar.php">
                 <div>
-                    <h2> Agendamento </h2>
-                    <p> Agende sua consulta de maneira on-line</p>
+                    <h2>Agendamento</h2>
+                    <p>
+                        Agende sua consulta de maneira on-line.
+                    </p>
                 </div>
             </a>
             <a href="./exames.php">
                 <div>
-                    <h2> Exames </h2>
-                    <p> Escolha uma das opções de exames disponíveis </p>
+                    <h2>Exames</h2>
+                    <p>
+                        Veja os tipos de exames que fazemos.
+                    </p>
                 </div>
             </a>
         </div>
@@ -65,28 +69,13 @@
         $db = new SQLite3("../db/hsucesso.db");
         $db->exec("PRAGMA foreign_keys = ON");
         $results = $db->query("SELECT * FROM Teste");
-        echo '
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>CPF</th>
-            </tr>
-        ';
-        while ($row = $results->fetchArray()) {
-            echo '
-            <tr>
-                <td>' . $row["id"] . '</td>
-                <td>' . $row["nome"] . '</td>
-                <td>' . $row["cpf"] . '</td>
-            </tr>
-            ';
-        }
-        echo '</table>';
         $db->close();
         ?>
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    exit();
+    ?>
 </body>
 
 </html>

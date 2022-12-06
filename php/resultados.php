@@ -15,16 +15,15 @@
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <div id="resultados">
-            <h2>Resultados:</h2>
-            <br>
-            <span>Para acessar os resultados de exames, faça seu login e clique no botão abaixo:</span>
             <?php
-            if (!isset($_SESSION)) echo "aaa";
-            // if (!$_SESSION) header("Location: ./login.php?resultados");
+            if (!isset($_SESSION["startTime"])) header("Location: ./login.php?r=resultados");
             ?>
+            <h2>Resultados:</h2>
         </div>
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    ?>
 </body>
 
 </html>

@@ -16,7 +16,10 @@
     <div id="wrapper">
         <h2>Entre em contato com nós:</h2>
     </div>
-    <?php include './footer_inc.php'; ?>
+    <?php
+    include './footer_inc.php';
+    exit();
+    ?>
 </body>
 
 </html>
