@@ -49,6 +49,12 @@ body {
   height: min-content;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+#abas>h3 {
+  height: fit-content;
+  margin: 0;
 }
 
 #abas>a {
@@ -131,7 +137,7 @@ nav>a:hover::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 #footer {

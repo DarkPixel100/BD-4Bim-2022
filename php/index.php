@@ -17,7 +17,11 @@
     <div id="wrapper">
         <div id="inicio">
             <h1>Atendimento</h1>
-            <p>HORÁRIO DE COLETAS:<br>Unidade Matriz - Rio Grande: 07hs às 17:30h - sáb. 7hs às 11:30hs<br>Unidade Filial - São José do Norte: Seg a Sex das 07:00 as 10:00 (não abre aos sábados)</p>
+            <p>
+                HORÁRIO DE COLETAS:<br>
+                -Unidade Matriz - Rio Grande: 07hs às 17:30h - sáb. 7hs às 11:30hs.<br>
+                -Unidade Filial - São José do Norte: Seg à Sex das 07:00 às 10:00 (não abre aos sábados).
+            </p>
         </div>
         <div id="caixas">
             <a href="./resultados.php">
@@ -64,13 +68,6 @@
                 <p>Espaço personalizado para agradar e entreter as crianças.</p>
             </div>
         </div>
-        <h3>Tabela importada do banco com PHP:</h3>
-        <?php
-        $db = new SQLite3("../db/hsucesso.db");
-        $db->exec("PRAGMA foreign_keys = ON");
-        $results = $db->query("SELECT * FROM Teste");
-        $db->close();
-        ?>
     </div>
     <?php
     include './footer_inc.php';

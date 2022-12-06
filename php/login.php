@@ -15,30 +15,23 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <form id="loginContainer" method="POST" action="">
-            <label for="user"><b>Usuário:</b></label>
-            <input type="text" placeholder="Digite o usuário" name="user" required>
-
-            <label for="senha"><b>Senha:</b></label>
-            <input type="password" placeholder="Digite a senha" name="senha" required>
-
-            <input type="checkbox" name="remember"> <b>Lembre-me</b></input>
-            <br>
-            <button type="submit">Login</button>
-        </form>
         <?php
+        if (isset($_GET["r"])) {
+            echo "<p><b>Faça login para poder acessar a página \"" . $_GET["r"] . "\".</b></p>";
+        }
         if (!empty($_POST)) {
-            $username = $_POST["user"];
+            $user_email = $_POST["userORemail"];
             $password = $_POST["senha"];
             $db = new SQLite3("../db/hsucesso.db");
             $db->exec("PRAGMA foreign_keys = ON");
             $userResults = $db->query("SELECT * FROM UserData");
             while ($row = $userResults->fetchArray()) {
-                if ($row["username"] == $username && $row["password"] == $password) {
+                if (($row["username"] == $user_email || $row["email"] == $user_email) && $row["password"] == $password) {
                     if (!isset($_POST["remember"])) {
                         $_SESSION["lifeTime"] = 600;
                     }
                     session_start();
+                    $_SESSION["loggedIn"] = "loggedIn";
                     $_SESSION["startTime"] = time();
                     $_SESSION["currentUserID"] = $row["id"];
                     $_SESSION["currentUserName"] = $row["username"];
@@ -50,8 +43,24 @@
                     break;
                 }
             }
+            if (!isset($_SESSION["loggedIn"])) {
+                echo "<p><b>Usuário/Email e/ou Senha incorretos.</b></p>";
+            }
         }
         ?>
+        <form id="loginContainer" method="POST" action="">
+            <label for="userORemail"><b>Usuário / Email:</b></label>
+            <input type="text" placeholder="Digite o usuário/email" name="userORemail" maxlength="30" required>
+
+            <label for="senha"><b>Senha:</b></label>
+            <input type="password" placeholder="Senha" name="senha" maxlength="20" required>
+
+            <input type="checkbox" name="remember"> <b>Lembre-me</b></input>
+            <br>
+            <button type="submit">Login</button>
+            <br>
+            <a href="./criaConta.php">Ainda não tenho uma conta</a>
+        </form>
     </div>
     <?php
     include './footer_inc.php';

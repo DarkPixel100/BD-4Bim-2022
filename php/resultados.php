@@ -16,7 +16,7 @@
     <div id="wrapper">
         <div id="resultados">
             <?php
-            if (!isset($_SESSION["startTime"])) header("Location: ./login.php?r=resultados");
+            if (!isset($_SESSION["startTime"])) header("Location: ./login.php?r=Resultados");
             ?>
             <h2>Resultados:</h2>
         </div>

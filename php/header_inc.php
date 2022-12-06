@@ -10,12 +10,15 @@ if (isset($_SESSION["lifeTime"]) && (time() - $_SESSION["startTime"] > $_SESSION
         <h1>Clínica Hsucesso</h1>
         <div id="abas">
             <?php
-            if (!isset($_SESSION["startTime"])) :
+            if (!isset($_SESSION["loggedIn"])) :
             ?>
                 <a id="login" href="/php/login.php">LOGIN</a>
             <?php
             else :
-                echo '<a id="logout" href="/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>';
+                echo '
+                <h3>' . $_SESSION["currentUserName"] . '</h3>
+                <a id="logout" href="/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>
+                ';
             endif; ?>
             <a id="contatos" href="/php/contatos.php">CONTATOS</a>
         </div>
