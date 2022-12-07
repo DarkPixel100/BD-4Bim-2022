@@ -17,10 +17,10 @@ if (isset($_SESSION["lifeTime"]) && (time() - $_SESSION["startTime"] > $_SESSION
             else :
                 echo '
                 <h3>' . $_SESSION["currentUserName"] . '</h3>
-                <a id="logout" href="/BD-4Bim-2022/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>
+                <a id="logout" href="/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>
                 ';
             endif; ?>
-            <a id="contatos" href="/BD-4Bim-2022/php/contatos.php">CONTATOS</a>
+            <a id="contatos" href="/php/contatos.php">CONTATOS</a>
         </div>
     </div>
     <nav>

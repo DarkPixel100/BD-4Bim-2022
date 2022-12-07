@@ -23,11 +23,9 @@
                 foreach ($row as $value) {
                     echo "<td>" . $value . "</td>";
                 }
-                echo "<td>";
-                echo "</td>";
                 echo "</tr>";
             }
-    $db->close();
+            $db->close();
         ?>
     </div>
     <?php
