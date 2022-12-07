@@ -14,7 +14,21 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wraper">
-
+        <?php
+        $db = new SQLite3("../db/hsucesso.db");
+        $db->exec("PRAGMA foreign_keys = ON");
+        $tabexames = $db->query("SELECT * FROM Exames");
+            while ($row = $tabexames->fetchArray()) {
+                echo "<tr>";
+                foreach ($row as $value) {
+                    echo "<td>" . $value . "</td>";
+                }
+                echo "<td>";
+                echo "</td>";
+                echo "</tr>";
+            }
+    $db->close();
+        ?>
     </div>
     <?php
     include './footer_inc.php';

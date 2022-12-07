@@ -9,14 +9,19 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/convenio.css">
 </head>
 
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <h3>Nossos Convênios:</h3>
-        <div id="fotosLocal">
+        <div id="fotosConv">
             <img src="../img/saudecaixa.png" alt="">
+            <img src="../img/agemed.png" alt="">
+            <img src="../img/ipeconvenio.png" alt="">
+            <img src="../img/bradescosaude.png" alt="">
+            <img src="../img/abapplogo.png" alt="">
         </div>
     </div>
     <?php

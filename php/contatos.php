@@ -15,7 +15,7 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-    <h2>Entre em contato com nós:</h2>
+    <h3>Entre em contato conosco:</h3>
         <div id="loginContainer">    
         <b><span>Email:</span></b>
         <a href="Clinica.Hsucesso@gmail.com">Clinica.Hsucesso@gmail.com</a> <br>

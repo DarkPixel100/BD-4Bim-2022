@@ -12,20 +12,20 @@ if (isset($_SESSION["lifeTime"]) && (time() - $_SESSION["startTime"] > $_SESSION
             <?php
             if (!isset($_SESSION["loggedIn"])) :
             ?>
-                <a id="login" href="/php/login.php">LOGIN</a>
+                <a id="login" href="/BD-4Bim-2022/php/login.php">LOGIN</a>
             <?php
             else :
                 echo '
                 <h3>' . $_SESSION["currentUserName"] . '</h3>
-                <a id="logout" href="/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>
+                <a id="logout" href="/BD-4Bim-2022/php/logout.php?r=' . basename($_SERVER["PHP_SELF"], ".php") . '" )>LOGOUT</a>
                 ';
             endif; ?>
-            <a id="contatos" href="/php/contatos.php">CONTATOS</a>
+            <a id="contatos" href="/BD-4Bim-2022/php/contatos.php">CONTATOS</a>
         </div>
     </div>
     <nav>
-        <a href="/php/cronograma.php">CRONOGRAMA</a>
-        <a href="/php/resultados.php">RESULTADOS</a>
-        <a href="/php/convenio.php">CONVÊNIOS</a>
+        <a href="/BD-4Bim-2022/php/cronograma.php">CRONOGRAMA</a>
+        <a href="/BD-4Bim-2022/php/resultados.php">RESULTADOS</a>
+        <a href="/BD-4Bim-2022/php/convenio.php">CONVÊNIOS</a>
     </nav>
 </div>
