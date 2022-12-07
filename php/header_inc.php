@@ -24,8 +24,8 @@ if (isset($_SESSION["lifeTime"]) && (time() - $_SESSION["startTime"] > $_SESSION
         </div>
     </div>
     <nav>
-        <a href="/BD-4Bim-2022/php/cronograma.php">CRONOGRAMA</a>
-        <a href="/BD-4Bim-2022/php/resultados.php">RESULTADOS</a>
-        <a href="/BD-4Bim-2022/php/convenio.php">CONVÊNIOS</a>
+        <a href="/php/cronograma.php">CRONOGRAMA</a>
+        <a href="/php/resultados.php">RESULTADOS</a>
+        <a href="/php/convenio.php">CONVÊNIOS</a>
     </nav>
 </div>

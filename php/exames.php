@@ -13,7 +13,7 @@
 
 <body>
     <?php include './header_inc.php'; ?>
-    <div id="wraper">
+    <div id="wrapper">
         <?php
         $db = new SQLite3("../db/hsucesso.db");
         $db->exec("PRAGMA foreign_keys = ON");
