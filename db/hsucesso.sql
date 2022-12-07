@@ -1,5 +1,4 @@
 PRAGMA FOREIGN_KEYS = OFF;
-
 DROP TABLE IF EXISTS UserData;
 CREATE TABLE UserData (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -7,34 +6,69 @@ CREATE TABLE UserData (
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL UNIQUE
 );
-
-INSERT INTO UserData (username, email, password) VALUES ("a", "a", "a");
-INSERT INTO UserData (username, email, password) VALUES ("diegofa2004", "diegofavila20@gmail.com", "senha123");
-
+INSERT INTO UserData (username, email, password)
+VALUES ("a", "a", "a");
+INSERT INTO UserData (username, email, password)
+VALUES (
+        "diegofa2004",
+        "diegofavila20@gmail.com",
+        "senha123"
+    );
 DROP TABLE IF EXISTS Exames;
 CREATE TABLE Exames (
-    nome TEXT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
     material TEXT NOT NULL,
     preco TEXT NOT NULL
 );
-
-INSERT INTO Exames (nome, material, preco) VALUES ("Hemograma","Sangue","R$ 50,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("HIV1 e HIV2 - Anticorpos totais","Sangue","R$ 70,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Espermograma","Esperma","R$ 100,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Exame Qualitativo de Urina","Urina","R$ 20,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Teste do Pezinho PLUS","Sangue Capilar","R$ 30,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Glicose (glicemia basal)","Sangue, Liquor, Urina","R$ 95,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Colesterol Total","Sangue","R$ 50,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Plaquetas","Sangue","R$ 35,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Ferro","Sangue","R$ 20,00");
-INSERT INTO Exames (nome, material, preco) VALUES ("Insulina","Sangue","R$ 50,00");
-
-DROP TABLE IF EXISTS agendamento;
-CREATE TABLE agendamento (
-    Paciente TEXT PRIMARY KEY NOT NULL
-    Doutor TEXT NOT NULL
-    Horários TEXT NOT NULL
-    Exame TEXT NOT NULL
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Hemograma", "Sangue", "R$ 50,00");
+INSERT INTO Exames (nome, material, preco)
+VALUES (
+        "HIV1 e HIV2 - Anticorpos totais",
+        "Sangue",
+        "R$ 70,00"
+    );
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Espermograma", "Esperma", "R$ 100,00");
+INSERT INTO Exames (nome, material, preco)
+VALUES (
+        "Exame Qualitativo de Urina",
+        "Urina",
+        "R$ 20,00"
+    );
+INSERT INTO Exames (nome, material, preco)
+VALUES (
+        "Teste do Pezinho PLUS",
+        "Sangue Capilar",
+        "R$ 30,00"
+    );
+INSERT INTO Exames (nome, material, preco)
+VALUES (
+        "Glicose (glicemia basal)",
+        "Sangue, Liquor, Urina",
+        "R$ 95,00"
+    );
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Colesterol Total", "Sangue", "R$ 50,00");
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Plaquetas", "Sangue", "R$ 35,00");
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Ferro", "Sangue", "R$ 20,00");
+INSERT INTO Exames (nome, material, preco)
+VALUES ("Insulina", "Sangue", "R$ 50,00");
+DROP TABLE IF EXISTS Agendamento;
+CREATE TABLE Agendamento (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    paciente TEXT NOT NULL,
+    doutor TEXT NOT NULL,
+    horarios TIME NOT NULL,
+    exame TEXT NOT NULL
 );
-
-INSERT INTO agendamento (Paciente, Doutor, Horários, Exame) VALUES ("Jacinto Pinto","Ben Dover","13:30","Espermograma");
+INSERT INTO agendamento (paciente, doutor, horarios, exame)
+VALUES (
+        "Jacinto Pinto",
+        "Ben Dover",
+        "13:30",
+        "Espermograma"
+    );

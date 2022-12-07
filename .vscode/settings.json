@@ -1,4 +1,6 @@
 {
-    "workbench.editor.openPositioning": "right",
-    "workbench.sideBar.location": "right"
+  "workbench.editor.openPositioning": "right",
+  "workbench.sideBar.location": "right",
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": false
 }

@@ -12,7 +12,7 @@ if (isset($_SESSION["lifeTime"]) && (time() - $_SESSION["startTime"] > $_SESSION
             <?php
             if (!isset($_SESSION["loggedIn"])) :
             ?>
-                <a id="login" href="/BD-4Bim-2022/php/login.php">LOGIN</a>
+                <a id="login" href="/php/login.php">LOGIN</a>
             <?php
             else :
                 echo '

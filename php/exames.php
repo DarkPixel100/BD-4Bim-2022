@@ -17,15 +17,24 @@
         <?php
         $db = new SQLite3("../db/hsucesso.db");
         $db->exec("PRAGMA foreign_keys = ON");
-        $tabexames = $db->query("SELECT * FROM Exames");
-            while ($row = $tabexames->fetchArray()) {
-                echo "<tr>";
-                foreach ($row as $value) {
-                    echo "<td>" . $value . "</td>";
-                }
-                echo "</tr>";
+        $results = $db->query("SELECT * FROM Exames");
+        echo "
+        <table id='tabelaexame'>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo de Coleta</th>
+                <th>Preço</th>
+            </tr>
+        ";
+        while ($row = $results->fetchArray()) {
+            echo "<tr>";
+            for ($i = 1; $i < sizeof($row) - 4; $i++) { //O -4 é temporário (fetchArray() duplica os valores do query())
+                echo "<td>" . $row[$i] . "</td>";
             }
-            $db->close();
+            echo "</tr>";
+        }
+        echo "</table>";
+        $db->close();
         ?>
     </div>
     <?php
