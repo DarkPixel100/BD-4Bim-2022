@@ -28,3 +28,13 @@ INSERT INTO Exames (nome, material, preco) VALUES ("Colesterol Total","Sangue","
 INSERT INTO Exames (nome, material, preco) VALUES ("Plaquetas","Sangue","R$ 35,00");
 INSERT INTO Exames (nome, material, preco) VALUES ("Ferro","Sangue","R$ 20,00");
 INSERT INTO Exames (nome, material, preco) VALUES ("Insulina","Sangue","R$ 50,00");
+
+DROP TABLE IF EXISTS agendamento;
+CREATE TABLE agendamento (
+    Paciente TEXT PRIMARY KEY NOT NULL
+    Doutor TEXT NOT NULL
+    Horários TEXT NOT NULL
+    Exame TEXT NOT NULL
+);
+
+INSERT INTO agendamento (Paciente, Doutor, Horários, Exame) VALUES ("Jacinto Pinto","Ben Dover","13:30","Espermograma");
