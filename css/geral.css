@@ -25,14 +25,14 @@ body {
 
 #box {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  position: relative;
 }
 
 #box>h1 {
   align-self: center;
+  text-align: center;
   padding: 1rem 10px 10px 10px;
   margin: 0;
   color: var(--main);
@@ -50,9 +50,11 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: absolute;
+  right: 0%;
 }
 
-#abas>h3 {
+#userName {
   height: fit-content;
   margin: 0;
 }
@@ -90,7 +92,7 @@ nav {
 }
 
 nav>a {
-  padding: 1rem;
+  padding: .7rem;
   text-align: center;
   position: relative;
   box-sizing: content-box;
@@ -140,6 +142,12 @@ nav>a:hover::after {
   justify-content: center;
 }
 
+.boundBox {
+  border: 3px solid var(--mainFocus);
+  border-radius: 5px;
+  padding: 2rem;
+}
+
 #footer {
   width: 100%;
   background-color: var(--sec);
@@ -152,19 +160,61 @@ nav>a:hover::after {
   margin-block: 1rem;
 }
 
+table {
+  display: table;
+}
+
+.dropdown {
+  height: calc(1.2rem + 1em);
+  overflow-y: hidden;
+  transition: height .5s ease-in-out;
+}
+
+.dropdown.dropped {
+  height: fit-content;
+}
+
 @media screen and (max-width: 870px) {
+  #header {
+    padding: 0;
+  }
+
   #box {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+
+  #box>a {
+    padding: 0;
+    margin-top: 2.2em;
+  }
+
+  #box>h1 {
+    text-align: center;
   }
 
   #abas {
     width: 100%;
+    position: static;
     display: flex;
     justify-content: center;
   }
 
+  #userName {
+    position: absolute;
+    top: 0;
+  }
+
   #abas>a {
+    padding: .7rem;
+    font-size: 11pt;
     border-radius: 5px;
+  }
+
+  nav>a {
+    font-size: 9pt;
   }
 
   #footer>h3 {

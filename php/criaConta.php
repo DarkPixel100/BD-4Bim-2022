@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
-    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -22,16 +21,15 @@
                 $username = $_POST["user"];
                 $email = $_POST["email"];
                 $password = $_POST["senha"];
-                $db = new SQLite3("../db/hsucesso.db");
-                $db->exec("PRAGMA foreign_keys = ON");
-                $db->exec("INSERT INTO UserData (username, email, password) VALUES ('" . $username . "', '" . $email . "', '" . $password . "')");
-                header("Location: ./login.php");
+                $db = new SQLite3('../db/userData.db');
+                $db->exec('INSERT INTO UserData (username, email, password) VALUES ("' . $username . '", "' . $email . '", "' . $password . '")');
+                header('Location: ./login.php');
             } else {
-                echo "<p><b>As senhas não coincidem.</b></p>";
+                echo '<p><b>As senhas não coincidem.</b></p>';
             }
         }
         ?>
-        <form id="loginContainer" method="POST" action="">
+        <form id="signinContainer" class="boundBox" method="POST" action="">
             <label for="user"><b>Usuário:</b></label>
             <input type="text" placeholder="Nome de usuário" name="user" maxlength="15" required>
 

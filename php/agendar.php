@@ -13,8 +13,11 @@
 
 <body>
     <?php include './header_inc.php'; ?>
-    <div id="wraper">
-
+    <div id="wrapper">
+        <?php
+        if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Agendar');
+        ?>
+        <h2>Agendar:</h2>
     </div>
     <?php
     include './footer_inc.php';

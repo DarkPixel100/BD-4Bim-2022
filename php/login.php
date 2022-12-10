@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
-    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -17,38 +16,37 @@
     <div id="wrapper">
         <?php
         if (isset($_GET["r"])) {
-            echo "<p><b>Faça login para poder acessar a página \"" . $_GET["r"] . "\".</b></p>";
+            echo '<p><b>Faça login para poder acessar a página "' . $_GET["r"] . '".</b></p>';
         }
         if (!empty($_POST)) {
             $user_email = $_POST["userORemail"];
             $password = $_POST["senha"];
-            $db = new SQLite3("../db/hsucesso.db");
-            $db->exec("PRAGMA foreign_keys = ON");
-            $userResults = $db->query("SELECT * FROM UserData");
+            $db = new SQLite3('../db/userData.db');
+            $userResults = $db->query("SELECT * FROM Users");
             while ($row = $userResults->fetchArray()) {
                 if (($row["username"] == $user_email || $row["email"] == $user_email) && $row["password"] == $password) {
                     if (!isset($_POST["remember"])) {
                         $_SESSION["lifeTime"] = 600;
                     }
                     session_start();
-                    $_SESSION["loggedIn"] = "loggedIn";
+                    $_SESSION["loggedIn"] = 'loggedIn';
                     $_SESSION["startTime"] = time();
                     $_SESSION["currentUserID"] = $row["id"];
                     $_SESSION["currentUserName"] = $row["username"];
                     if (isset($_GET["r"])) {
-                        header("Location: " . $_GET["r"] . ".php");
+                        header('Location: ' . $_GET["r"] . '.php');
                     } else {
-                        header("Location: ./index.php");
+                        header('Location: ./home.php');
                     }
                     break;
                 }
             }
             if (!isset($_SESSION["loggedIn"])) {
-                echo "<p><b>Usuário/Email e/ou Senha incorretos.</b></p>";
+                echo '<p><b>Usuário/Email e/ou Senha incorretos.</b></p>';
             }
         }
         ?>
-        <form id="loginContainer" method="POST" action="">
+        <form id="loginContainer" class="boundBox" method="POST" action="">
             <label for="userORemail"><b>Usuário / Email:</b></label>
             <input type="text" placeholder="Digite o usuário/email" name="userORemail" maxlength="30" required>
 

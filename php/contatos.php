@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
-    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-    <h3>Entre em contato conosco:</h3>
-        <div id="loginContainer">    
-        <b><span>Email:</span></b>
-        <a href="Clinica.Hsucesso@gmail.com">Clinica.Hsucesso@gmail.com</a> <br>
-        <b><span>Endereço:</span></b> 
-        <a href="google.maps">Av. Villa Braga Machado</a><br>
-        <b><span>Telefone:</span></b>
-        <a href="zapzap">(53)999742069</a></div>
+        <h3>Entre em contato conosco:</h3>
+        <div class="boundBox">
+            <b><span>Email:</span></b>
+            <a href="mailto:Clinica.Hsucesso@gmail.com" target="_blank">Clinica.Hsucesso@gmail.com</a> <br>
+            <b><span>Endereço:</span></b>
+            <a href="https://goo.gl/maps/xki6AXzE6XfDwXf88" target="_blank">Av. Villa Braga Machado, 475 - Centro, Rio Grande - RS</a><br>
+            <b><span>Telefone:</span></b>
+            <a href="https://wa.me/5553999742069" target="_blank">(53) 99974-2069</a>
+        </div>
     </div>
     <?php
     include './footer_inc.php';
