@@ -9,31 +9,41 @@
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/exames.css">
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/exames.js"></script>
 </head>
 
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <?php
-        $db = new SQLite3("../db/hsucesso.db");
-        $db->exec("PRAGMA foreign_keys = ON");
-        $results = $db->query("SELECT * FROM Exames");
-        echo "
-        <table id='tabelaexame'>
-            <tr>
-                <th>Nome</th>
-                <th>Tipo de Coleta</th>
-                <th>Preço</th>
-            </tr>
-        ";
-        while ($row = $results->fetchArray()) {
-            echo "<tr>";
-            for ($i = 1; $i < sizeof($row) - 4; $i++) { //O -4 é temporário (fetchArray() duplica os valores do query())
-                echo "<td>" . $row[$i] . "</td>";
+        $db = new SQLite3('../db/userData.db');
+        $results = $db->query('SELECT * FROM DadosExames');
+        echo '
+        <table id="tabelaexame">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo de Coleta</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+        ';
+        while ($row = $results->fetchArray(SQLITE3_NUM)) {
+            echo '<tr id="' . $row[0] . '">';
+            for ($i = 1; $i < sizeof($row) - 1; $i++) {
+                echo '<td>';
+                if ($i == 1) {
+                    echo '<div><p class="nome">' . $row[$i] . '</p><p class="descricao">' . $row[sizeof($row) - 1] . '</p></div></td>';
+                } else {
+                    echo '<p>' . $row[$i] . '</p>';
+                }
             }
-            echo "</tr>";
+            echo '</tr>';
         }
-        echo "</table>";
+        echo '</tbody></table>';
         $db->close();
         ?>
     </div>
