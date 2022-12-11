@@ -15,17 +15,18 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
+        <h3>Crie sua conta:</h3>
         <?php
         if (!empty($_POST)) {
             $date1 = new DateTime(date('d/m/Y'));
             $date2 = new DateTime($_POST["dataNascimento"]);
             $idade = $date1->diff($date2)->format("%y");
             if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-                echo '<p><b>Formato de email inválido.</b></p>';
+                echo '<p>Formato de email inválido.</p>';
             } else if (!($_POST["senha"] == $_POST["senha2"])) {
-                echo '<p><b>As senhas não coincidem.</b></p>';
+                echo '<p>As senhas não coincidem.</p>';
             } else if ($idade < 18) {
-                echo '<p><b>Você precisa ter pelo menos 18 anos para criar uma conta.</b></p>';
+                echo '<p>Você precisa ter pelo menos 18 anos para criar uma conta.</p>';
             } else {
                 $username = trim($_POST["user"]);
                 $email = trim($_POST["email"]);
@@ -36,32 +37,36 @@
                 $db = new SQLite3('../db/userData.db');
                 $lookUp = implode($db->querySingle('SELECT * FROM Users WHERE username = "' . $username . '" OR email = "' . $email . '" OR nomeReal = "' . $nomeReal . '" OR cpf = "' . $cpf . '";', true));
                 if (str_contains($lookUp, $username)) {
-                    echo "<p><b>Esse nome de usuário já é utilizado por outra pessoa.</b></p>";
+                    echo "<p>Esse nome de usuário já é utilizado por outra pessoa.</p>";
                 } else if (str_contains($lookUp, $nomeReal) || str_contains($lookUp, $nomeReal)) {
-                    echo "<p><b>Essa pessoa já tem uma conta cadastrada.</b></p>";
+                    echo "<p>Essa pessoa já tem uma conta cadastrada.</p>";
                 } else if (str_contains($lookUp, $email)) {
-                    echo "<p><b>Esse email já é utilizado por outra pessoa.</b></p>";
+                    echo "<p>Esse email já é utilizado por outra pessoa.</p>";
                 } else {
                     $db->exec('INSERT INTO Users (username, email, password, nomeReal, cpf, idade) VALUES ("' . $username . '", "' . $email . '", "' . $password . '", "' . $nomeReal . '", "' . $cpf . '", ' . $idade . ')');
                     header('Location: ./login.php');
                 }
             }
+            $db->close();
         }
         ?>
-        <h2>Crie sua conta:</h2>
-        <form id="signupContainer" class="boundBox" method="POST" action="">
+        <form id="signupContainer" class="boundBox" action="" method="POST">
             <label for="user">
-                <b>Usuário:</b>
+                Usuário:
                 <input type="text" placeholder="Nome de usuário" name="user" maxlength="15" required>
             </label>
 
             <label for="nomeReal">
-                <b>Nome completo:</b>
-                <input type="text" placeholder="Nome completo" name="nomeReal" maxlength="50" required>
+                Nome completo:
+                <input type="text" placeholder="Nome completo" name="nomeReal" maxlength="50" oninput="
+                if (this['value'].length > 0) {
+                    this['value'] = this['value'][0].toUpperCase() + this['value'].slice(1,this['value'].length);
+                }   
+                " required>
             </label>
 
             <label for="cpf">
-                <b>CPF:</b>
+                CPF:
                 <input type="text" placeholder="CPF" name="cpf" minlength="14" maxlength="14" oninput="
                 if(this['value'].length > 3 && this['value'][3] != '.') {
                     this['value'] = this['value'].slice(0,3) + '.' + this['value'].slice(3);
@@ -79,22 +84,22 @@
             </label>
 
             <label for="email">
-                <b>Email:</b>
+                Email:
                 <input type="text" placeholder="Email" name="email" maxlength="30" required>
             </label>
 
             <label for="senha">
-                <b>Senha:</b>
+                Senha:
                 <input type="password" placeholder="Senha" name="senha" maxlength="20" required>
             </label>
 
             <label for="senha2">
-                <b>Repita a senha:</b>
+                Repita a senha:
                 <input type="password" placeholder="Repita a senha" name="senha2" maxlength="20" required>
             </label>
 
             <label for="dataNascimento">
-                <b>Data de nasimento</b>
+                Data de nasimento
                 <input type="date" name="dataNascimento" required>
             </label>
 

@@ -15,10 +15,11 @@
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
         <div id="resultados">
+            <h2>Resultados:</h2>
             <?php
             if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Resultados');
+            //
             ?>
-            <h2>Resultados:</h2>
         </div>
     </div>
     <?php

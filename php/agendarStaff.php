@@ -40,7 +40,7 @@
             }
         }
         ?>
-        <form class="boundBox" action="./agendarRedirect.php" method="POST">
+        <form class="boundBox" action="" method="POST">
             <label for="tipoExame">Tipo de Exame:</label>
             <select name="tipoExame" id="tipoExame">
                 <?php
@@ -54,6 +54,28 @@
             </select>
             <label for="datahorario">Data e horário do Exame:</label>
             <input type="datetime-local" name="datahorario" id="datahorario">
+
+            <label for="paciente">Paciente:</label>
+            <select name="paciente" id="paciente">
+                <?php
+                $patientData = $db->query('SELECT id, nomeReal FROM Users');
+                while ($row = $patientData->fetchArray(SQLITE3_ASSOC)) {
+                    echo '<option value="' . $row["id"] . '">' . $row["nomeReal"] . '</option>';
+                }
+                ?>
+            </select>
+
+            <label for="enfermeiro">Enfermeiro:</label>
+            <select name="enfermeiro" id="enfermeiro">
+                <?php
+                $nurseData = $db->query('SELECT Funcionarios.id, Users.nomeReal FROM Funcionarios LEFT JOIN Users WHERE Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";');
+                while ($row = $nurseData->fetchArray(SQLITE3_ASSOC)) {
+                    echo '<option value="' . $row["id"] . '">' . $row["nomeReal"] . '</option>';
+                }
+                unset($row);
+                $db->close();
+                ?>
+            </select>
 
             <button type="submit">Agendar</button>
         </form>

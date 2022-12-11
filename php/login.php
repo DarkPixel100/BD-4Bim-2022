@@ -33,26 +33,29 @@
                 $_SESSION["startTime"] = time();
                 $_SESSION["currentUserID"] = $row["id"];
                 $_SESSION["currentUserName"] = $row["username"];
+                $_SESSION["currentUserType"] = $db->querySingle('SELECT * FROM Funcionarios WHERE id = ' . $row["id"] . ';', true)["type"];
                 if (isset($_GET["r"])) {
                     header('Location: ' . $_GET["r"] . '.php');
                 } else {
                     header('Location: ./home.php');
                 }
             }
+            unset($row);
+            $db->close();
             if (!isset($_SESSION["loggedIn"])) {
                 echo '<p><b>Usuário/Email e/ou Senha incorretos.</b></p>';
             }
         }
         ?>
-        <h2>Login:</h2>
-        <form id="loginContainer" class="boundBox" method="POST" action="">
-            <label for="userORemail"><b>Usuário / Email:</b></label>
+        <h3>Login:</h3>
+        <form id="loginContainer" class="boundBox" action="" method="POST">
+            <label for="userORemail">Usuário / Email:</label>
             <input type="text" placeholder="Digite o usuário/email" name="userORemail" maxlength="30" required>
 
-            <label for="senha"><b>Senha:</b></label>
+            <label for="senha">Senha:</label>
             <input type="password" placeholder="Senha" name="senha" maxlength="20" required>
 
-            <input type="checkbox" name="remember"> <b>Lembre-me</b></input>
+            <input type="checkbox" name="remember"><b> Lembre-me</b></input>
             <br>
             <button type="submit">Login</button>
             <br>

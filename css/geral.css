@@ -164,6 +164,10 @@ table {
   display: table;
 }
 
+input, select, option {
+  color: var(--main);
+}
+
 .dropdown {
   height: calc(1.2rem + 1em);
   overflow-y: hidden;

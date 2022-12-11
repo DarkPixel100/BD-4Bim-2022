@@ -32,12 +32,11 @@ CREATE TABLE DadosExames (
 );
 -- Sceduling table
 CREATE TABLE Agendamento (
-    id INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     exame_id INTEGER NOT NULL,
     horario TIME NOT NULL,
     paciente_id INTEGER NOT NULL,
     enfermeiro_id INTEGER NOT NULL,
-    PRIMARY KEY (id, paciente_id),
     FOREIGN KEY (exame_id) REFERENCES DadosExames(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (paciente_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (enfermeiro_id) REFERENCES Funcionarios(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -50,7 +49,7 @@ VALUES (
         "a",
         "a@gmail.com",
         "0cc175b9c0f1b6a831c399e269772661",
-        "a",
+        "A",
         "000.000.000-00",
         18
     );
@@ -60,7 +59,7 @@ VALUES (
         "b",
         "b@gmail.com",
         "92eb5ffee6ae2fec3ad71c777531578f",
-        "b",
+        "B",
         "111.111.111-11",
         18
     );
@@ -69,6 +68,30 @@ VALUES (1, "enfermeiro");
 INSERT INTO Users
 VALUES (
         2,
+        "c",
+        "c@gmail.com",
+        "4a8a08f09d37b73795649038408b5f33",
+        "C",
+        "222.222.222-22",
+        18
+    );
+INSERT INTO Funcionarios
+VALUES (2, "enfermeiro");
+INSERT INTO Users
+VALUES (
+        3,
+        "d",
+        "d@gmail.com",
+        "8277e0910d750195b448797616e091ad",
+        "D",
+        "333.333.333-33",
+        18
+    );
+INSERT INTO Funcionarios
+VALUES (3, "enfermeiro");
+INSERT INTO Users
+VALUES (
+        4,
         "diegofa2004",
         "diegofavila20@gmail.com",
         "e7d80ffeefa212b7c5c55700e4f7193e",
@@ -77,7 +100,7 @@ VALUES (
         18
     );
 INSERT INTO Funcionarios
-VALUES (2, "atendente");
+VALUES (4, "atendente");
 -- Adding data for the different types of exams
 INSERT INTO DadosExames (nome, material, preco, descricao)
 VALUES (
@@ -150,12 +173,60 @@ VALUES (
         "R$ 50,00",
         "Mede a quantidade de insulina no sangue. A insulina é um hormônio produzido e armazenado no pâncreas. É vital para transporte e armazenamento da glicose nas células, regula o nível sanguíneo de glicose e controla o metabolismo de lipídios."
     );
--- Scheduling an exam
+-- Scheduling exams
 INSERT INTO Agendamento
 VALUES (
         0,
         1,
-        "2022-12-29 13:30:00",
+        "2022-12-29T13:30",
         0,
         1
     );
+INSERT INTO Agendamento
+VALUES (
+        1,
+        1,
+        "2022-12-29T12:30",
+        0,
+        1
+    );
+INSERT INTO Agendamento
+VALUES (
+        2,
+        1,
+        "2022-12-29T15:30",
+        0,
+        2
+    );
+-- SELECT Funcionarios.id,
+--     Users.nomeReal
+-- FROM Funcionarios
+--     JOIN Users ON Funcionarios.id = Users.id
+--     AND Funcionarios.type = "enfermeiro"
+--     LEFT JOIN Agendamento ON Funcionarios.id = Agendamento.enfermeiro_id
+-- EXCEPT
+-- SELECT Funcionarios.id,
+--     Users.nomeReal
+-- FROM Agendamento
+--     LEFT JOIN Funcionarios ON Funcionarios.id = Agendamento.enfermeiro_id
+--     AND Agendamento.horario = "2022-12-29T13:30"
+--     JOIN Users ON Funcionarios.id = Users.id
+--     AND Funcionarios.type = "enfermeiro";
+-- SELECT Users.id,
+--     Users.nomeReal
+-- FROM Agendamento
+--     JOIN Users ON Users.id = Agendamento.paciente_id
+--     AND Agendamento.horario = "2022-12-29T13:30";
+----------------------------------------------------------------
+SELECT Users.id
+FROM Agendamento
+    JOIN Users ON Users.id = 0
+    AND Users.id = Agendamento.paciente_id
+    AND Agendamento.horario = "2022-12-29T13:30";
+SELECT Funcionarios.id
+FROM Agendamento
+    LEFT JOIN Funcionarios ON Funcionarios.id = 1
+    AND Funcionarios.id = Agendamento.enfermeiro_id
+    AND Agendamento.horario = "2022-12-29T13:30"
+    JOIN Users ON Funcionarios.id = Users.id
+    AND Funcionarios.type = "enfermeiro";

@@ -17,6 +17,7 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
+        <h2>Tipos de Exame:</h2>
         <?php
         $db = new SQLite3('../db/userData.db');
         $results = $db->query('SELECT * FROM DadosExames;');
@@ -43,6 +44,7 @@
             }
             echo '</tr>';
         }
+        unset($row);
         echo '</tbody></table>';
         $db->close();
         ?>

@@ -32,22 +32,28 @@
                     </p>
                 </div>
             </a>
-            <a href="./agendar.php">
-                <div>
-                    <h2>Agendamento</h2>
-                    <p>
-                        Agende sua consulta de maneira on-line.
-                    </p>
-                </div>
-            </a>
-            <a href="./exames.php">
-                <div>
-                    <h2>Exames</h2>
-                    <p>
-                        Veja os tipos de exames que fazemos.
-                    </p>
-                </div>
-            </a>
+            <?php
+            if ($_SESSION["currentUserType"] == 'atendente') :
+            ?>
+                <a href="./agendarStaff.php">
+                <?php else : ?>
+                    <a href="./agendar.php">
+                    <?php endif; ?>
+                    <div>
+                        <h2>Agendamento</h2>
+                        <p>
+                            Agende sua consulta de maneira on-line.
+                        </p>
+                    </div>
+                    </a>
+                    <a href="./exames.php">
+                        <div>
+                            <h2>Exames</h2>
+                            <p>
+                                Veja os tipos de exames que fazemos.
+                            </p>
+                        </div>
+                    </a>
         </div>
         <h2>Sempre perto de você</h2>
         <p>Estamos evoluindo sempre, focados no bem estar dos nossos clientes, buscando proporcionar o carinho e conforto a que todos merecem</p>
