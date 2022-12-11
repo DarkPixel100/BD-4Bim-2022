@@ -19,26 +19,24 @@
             echo '<p><b>Faça login para poder acessar a página "' . $_GET["r"] . '".</b></p>';
         }
         if (!empty($_POST)) {
-            $user_email = $_POST["userORemail"];
-            $password = $_POST["senha"];
+            $user_email = trim($_POST["userORemail"]);
+            $password = md5(trim($_POST["senha"]));
             $db = new SQLite3('../db/userData.db');
-            $userResults = $db->query("SELECT * FROM Users");
-            while ($row = $userResults->fetchArray()) {
-                if (($row["username"] == $user_email || $row["email"] == $user_email) && $row["password"] == $password) {
-                    if (!isset($_POST["remember"])) {
-                        $_SESSION["lifeTime"] = 600;
-                    }
-                    session_start();
-                    $_SESSION["loggedIn"] = 'loggedIn';
-                    $_SESSION["startTime"] = time();
-                    $_SESSION["currentUserID"] = $row["id"];
-                    $_SESSION["currentUserName"] = $row["username"];
-                    if (isset($_GET["r"])) {
-                        header('Location: ' . $_GET["r"] . '.php');
-                    } else {
-                        header('Location: ./home.php');
-                    }
-                    break;
+            $userResults = $db->query('SELECT * FROM Users WHERE (username = "' . $user_email . '" OR email = "' . $user_email . '") AND password = "' . $password . '";');
+            $row = $userResults->fetchArray(SQLITE3_ASSOC);
+            if (is_array($row) && sizeof($row) > 0) {
+                if (!isset($_POST["remember"])) {
+                    $_SESSION["lifeTime"] = 600;
+                }
+                session_start();
+                $_SESSION["loggedIn"] = 'loggedIn';
+                $_SESSION["startTime"] = time();
+                $_SESSION["currentUserID"] = $row["id"];
+                $_SESSION["currentUserName"] = $row["username"];
+                if (isset($_GET["r"])) {
+                    header('Location: ' . $_GET["r"] . '.php');
+                } else {
+                    header('Location: ./home.php');
                 }
             }
             if (!isset($_SESSION["loggedIn"])) {
@@ -46,6 +44,7 @@
             }
         }
         ?>
+        <h2>Login:</h2>
         <form id="loginContainer" class="boundBox" method="POST" action="">
             <label for="userORemail"><b>Usuário / Email:</b></label>
             <input type="text" placeholder="Digite o usuário/email" name="userORemail" maxlength="30" required>

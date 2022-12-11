@@ -19,7 +19,7 @@
     <div id="wrapper">
         <?php
         $db = new SQLite3('../db/userData.db');
-        $results = $db->query('SELECT * FROM DadosExames');
+        $results = $db->query('SELECT * FROM DadosExames;');
         echo '
         <table id="tabelaexame">
             <thead>

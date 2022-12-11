@@ -11,7 +11,7 @@ CREATE TABLE Users (
     id INTEGER PRIMARY KEY NOT NULL,
     username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
     nomeReal TEXT NOT NULL UNIQUE,
     cpf TEXT NOT NULL UNIQUE,
     idade INTEGER NOT NULL
@@ -49,7 +49,7 @@ VALUES (
         0,
         "a",
         "a@gmail.com",
-        "a",
+        "0cc175b9c0f1b6a831c399e269772661",
         "a",
         "000.000.000-00",
         18
@@ -59,7 +59,7 @@ VALUES (
         1,
         "b",
         "b@gmail.com",
-        "b",
+        "92eb5ffee6ae2fec3ad71c777531578f",
         "b",
         "111.111.111-11",
         18
@@ -71,7 +71,7 @@ VALUES (
         2,
         "diegofa2004",
         "diegofavila20@gmail.com",
-        "senha123",
+        "e7d80ffeefa212b7c5c55700e4f7193e",
         "Diego Fontes de Avila",
         "015.367.357-95",
         18
