@@ -29,9 +29,7 @@
             if (is_array($patientCheck) && sizeof($patientCheck) > 0) {
                 echo '<p>Você não tem esse horário disponível.</p>';
             } else if (is_array($nurseCheck) && sizeof($nurseCheck) > 0) {
-                echo '<p>Esse enfermeiro já realizará um exame nesse horário.</p>';
-            } else if ($_POST["paciente"] == $_POST["enfermeiro"]) {
-                echo '<p>O paciente e enfermeiro não podem ser a mesma pessoa.</p>';
+                echo '<p>Não temos profissionais disponíveis para o horário desejado.</p>';
             } else {
                 $db->exec('INSERT INTO Agendamento (exame_id, horario, paciente_id, enfermeiro_id) VALUES (' . $_POST["tipoExame"] . ', "' . $_POST["datahorario"] . '", ' . $_POST["paciente"] . ', ' . $_POST["enfermeiro"] . ')');
                 $done = true;

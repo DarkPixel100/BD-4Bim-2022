@@ -26,6 +26,7 @@
         $results = $db->query('SELECT Agendamento.id, DadosExames.nome, Agendamento.horario, Users.nomeReal FROM Agendamento JOIN Users ON Users.id = ' . $_SESSION["currentUserID"] . ' AND Users.id = Agendamento.paciente_id JOIN DadosExames ON DadosExames.id = Agendamento.exame_id;');
         $row = $results->fetchArray(SQLITE3_NUM);
         if (is_array($row) && sizeof($row) > 0) {
+            $row[2] = date('d/m/Y / H:i', strtotime($row[2]));
             echo '
             <table id="tabelaexame">
                 <thead>

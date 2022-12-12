@@ -19,11 +19,43 @@
             <?php
             if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Resultados');
             ?>
-            <span>Para acessar os resultados de exames, clique no botão abaixo:</span>
-            <br>
-            <br>
-            <span>Clique aqui para baixar os resultados dos exames:</span>
-            <a href="../resultados/resultados.pdf" download="Resultados.pdf"><button type="button">Download</button></a>
+            <?php
+            if ($_SESSION["currentUserType"] == '' && filetype('../resultados/resultados' . $_SESSION['currentUserID'] . '.pdf')) : ?>
+                <span>Para acessar os resultados de exames, clique no botão abaixo:</span>
+                <br>
+                <br>
+                <span>Clique aqui para baixar os resultados dos exames:</span>
+                <?php
+                echo '<a href="../resultados/resultados' . $_SESSION['currentUserID'] . '.pdf" download="Resultados' . $_SESSION['currentUserName'] . '.pdf"><button type="button">Download</button></a>';
+                ?>
+            <?php elseif ($_SESSION["currentUserType"] == '') : ?>
+                <span>Seus resultados ainda não estão prontos</span>
+            <?php else : ?>
+                <div class="boundBox">
+                    <span>Faça upload dos resultados:</span>
+                    <?php
+                    $db = new SQLite3('../db/userData.db');
+                    if (!empty($_POST)) {
+                        $target_file = '../resultados/resultados' . $_POST["pacientes"] . '.pdf';
+                        move_uploaded_file($_FILES["resultado"]["tmp_name"], $target_file);
+                    }
+                    ?>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <label for="resultado">Arquivo (.pdf):</label>
+                        <input type="file" name="resultado" id="resultado">
+                        <label for="pacientes">Paciente:</label>
+                        <select name="pacientes" id="pacientes">
+                            <?php
+                            $patients = $db->query('SELECT id, nomeReal FROM Users');
+                            while ($row = $patients->fetchArray(SQLITE3_ASSOC)) {
+                                echo '<option value="' . $row["id"] . '">' . $row["nomeReal"] . '</option>';
+                            }
+                            ?>
+                        </select>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
     <?php
