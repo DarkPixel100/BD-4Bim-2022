@@ -15,7 +15,7 @@
 <body>
     <?php include './header_inc.php'; ?>
     <div id="wrapper">
-        <h3>Nossos Convênios:</h3>
+        <h2>Nossos Convênios:</h2>
         <div id="fotosConv">
             <img src="../img/saudecaixa.png" alt="">
             <img src="../img/agemed.png" alt="">

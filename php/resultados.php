@@ -18,8 +18,12 @@
             <h2>Resultados:</h2>
             <?php
             if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Resultados');
-            //
             ?>
+            <span>Para acessar os resultados de exames, clique no botão abaixo:</span>
+            <br>
+            <br>
+            <span>Clique aqui para baixar os resultados dos exames:</span>
+            <a href="../resultados/resultados.pdf" download="Resultados.pdf"><button type="button">Download</button></a>
         </div>
     </div>
     <?php

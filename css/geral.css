@@ -11,7 +11,9 @@ body {
   flex-direction: column;
 }
 
+
 /* HEADER: */
+
 #header {
   width: 100%;
   background-color: var(--sec);
@@ -74,7 +76,10 @@ body {
   max-width: 10%;
 }
 
+
 /* Linha de centralização */
+
+
 /* hr {
     background-color: red;
     height: 100%;
@@ -130,9 +135,12 @@ nav>a:hover::after {
   height: 111%;
 }
 
+
 /* FIM DO HEADER */
 
+
 /* COMEÇO DO WRAPPER */
+
 #wrapper {
   flex-grow: 1;
   padding: 2rem;
@@ -164,7 +172,13 @@ table {
   display: table;
 }
 
-input, select, option {
+table td * {
+  margin: 0;
+}
+
+input,
+select,
+option {
   color: var(--main);
 }
 

@@ -1,30 +1,24 @@
-<formaction=". /agendar.php" method="POST">
-    <select name="tipoExame" id="tipoExame">
+<form action="./agendar.php" method="POST">
+    <?php
+    if (!isset($_SESSION["currentUserID"])) session_start();
+    $db = new SQLite3('../db/userData.db');
+    echo '
+    <select name="tipoExame" id="tipoExame"><option value="' . $_POST["tipoExame"] . '"></select>
+    <input type="datetime-local" name="datahorario" id="datahorario" value="' . $_POST["datahorario"] . '">
+    ';
+    ?>
+    <select name="paciente" id="paciente">
         <?php
-        $db = new SQLite3('../db/userData.db');
-        $examData = $db->query('SELECT id, nome FROM DadosExames;');
-        while ($row = $examData->fetchArray(SQLITE3_ASSOC)) {
-            echo '<option value="' . $row["id"] . '">' . $row["nome"] . '</option>';
-        }
-        unset($row);
+        echo '<option value="' . $_SESSION["currentUserID"] . '"></option>';
         ?>
     </select>
-    <select name="paciente" id="paciente" hidden>
+
+    <select name="enfermeiro" id="enfermeiro">
         <?php
-        while ($row = $patientData->fetchArray(SQLITE3_ASSOC)) {
-            echo '<option value="' . $_SESSION["currentUserId"] . '"></option>';
-        }
-        ?>
-    </select>
-    <select name="enfermeiro" id="enfermeiro" hidden>
-        <?php
-        $nurseCheck = $db->querySingle('SELECT Funcionarios.id FROM Agendamento LEFT JOIN Funcionarios ON Funcionarios.id = ' . $_POST["enfermeiro"] . ' AND Funcionarios.id = Agendamento.enfermeiro_id AND Agendamento.horario = "' . $_POST["datahorario"] . '" JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";', true);
-        $nurseData = $db->query('SELECT Funcionarios.id, Users.nomeReal FROM Funcionarios LEFT JOIN Users WHERE Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";');
-        while ($row = $nurseData->fetchArray(SQLITE3_ASSOC)) {
-            echo '<option value="' . $row["id"] . '">' . $row["nomeReal"] . '</option>';
-        }
-        unset($row);
+        $nurseCheck = $db->querySingle('SELECT Funcionarios.id, Users.nomeReal FROM Funcionarios JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro" LEFT JOIN Agendamento ON Funcionarios.id = Agendamento.enfermeiro_id EXCEPT SELECT Funcionarios.id, Users.nomeReal FROM Agendamento LEFT JOIN Funcionarios ON Funcionarios.id = Agendamento.enfermeiro_id AND Agendamento.horario = "' . $_POST["datahorario"] . '" JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";', true);
+        echo '<option value="' . $nurseCheck["id"] . '"></option>';
         $db->close();
         ?>
     </select>
-    </form>
+</form>
+<script src="../js/submit.js"></script>

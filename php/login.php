@@ -47,7 +47,7 @@
             }
         }
         ?>
-        <h3>Login:</h3>
+        <h2>Login:</h2>
         <form id="loginContainer" class="boundBox" action="" method="POST">
             <label for="userORemail">Usuário / Email:</label>
             <input type="text" placeholder="Digite o usuário/email" name="userORemail" maxlength="30" required>

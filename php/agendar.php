@@ -21,42 +21,47 @@
             $db = new SQLite3('../db/userData.db');
             $patientCheck = $db->querySingle('SELECT Users.id FROM Agendamento JOIN Users ON Users.id = ' . $_POST["paciente"] . ' AND (Users.id = Agendamento.paciente_id OR Users.id = Agendamento.enfermeiro_id) AND Agendamento.horario = "' . $_POST["datahorario"] . '";', true);
             $nurseCheck = $db->querySingle('SELECT Funcionarios.id FROM Agendamento LEFT JOIN Funcionarios ON Funcionarios.id = ' . $_POST["enfermeiro"] . ' AND Funcionarios.id = Agendamento.enfermeiro_id AND Agendamento.horario = "' . $_POST["datahorario"] . '" JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";', true);
-            // echo $_POST["paciente"] . '-------' . $_POST["datahorario"] . '-------' . $_POST["enfermeiro"] . '<br>';
+            $currentDate = strtotime(date('d-m-Y h:m'));
+            $chosenDate = strtotime($_POST["datahorario"]);
+            if ($chosenDate - $currentDate <= 0) {
+                echo '<p>A data inserida é inválida.</p>';
+            } else
             if (is_array($patientCheck) && sizeof($patientCheck) > 0) {
-                echo '<p>Esse paciente não tem esse horário disponível.</p>';
+                echo '<p>Você não tem esse horário disponível.</p>';
             } else if (is_array($nurseCheck) && sizeof($nurseCheck) > 0) {
                 echo '<p>Esse enfermeiro já realizará um exame nesse horário.</p>';
             } else if ($_POST["paciente"] == $_POST["enfermeiro"]) {
                 echo '<p>O paciente e enfermeiro não podem ser a mesma pessoa.</p>';
             } else {
-                echo var_export($patientCheck) . '-----' . var_export($nurseCheck);
-                // $db->exec('INSERT INTO Agendamento VALUES (0,0,0,0,0)');
-                //id INTEGER NOT NULL,
-                // exame_id INTEGER NOT NULL,
-                // horario TIME NOT NULL,
-                // paciente_id INTEGER NOT NULL,
-                // enfermeiro_id INTEGER NOT NULL,
-                // PRIMARY KEY (id, paciente_id),
+                $db->exec('INSERT INTO Agendamento (exame_id, horario, paciente_id, enfermeiro_id) VALUES (' . $_POST["tipoExame"] . ', "' . $_POST["datahorario"] . '", ' . $_POST["paciente"] . ', ' . $_POST["enfermeiro"] . ')');
+                $done = true;
             }
         }
         ?>
-        <form class="boundBox" action="./agendarRedirect.php" method="POST">
-            <label for="tipoExame">Tipo de Exame:</label>
-            <select name="tipoExame" id="tipoExame">
-                <?php
-                $db = new SQLite3('../db/userData.db');
-                $examData = $db->query('SELECT id, nome FROM DadosExames;');
-                while ($row = $examData->fetchArray(SQLITE3_ASSOC)) {
-                    echo '<option value="' . $row["id"] . '">' . $row["nome"] . '</option>';
-                }
-                unset($row);
-                ?>
-            </select>
-            <label for="datahorario">Data e horário do Exame:</label>
-            <input type="datetime-local" name="datahorario" id="datahorario">
+        <?php if ($done) : ?>
+            <h4>Exame agendado com sucesso!</h4>
+            <a href="">
+                <button>Agendar Outro</button>
+            </a>
+        <?php else : ?>
+            <form class="boundBox" action="./agendarRedirect.php" method="POST">
+                <label for="tipoExame">Tipo de Exame:</label>
+                <select name="tipoExame" id="tipoExame">
+                    <?php
+                    $db = new SQLite3('../db/userData.db');
+                    $examData = $db->query('SELECT id, nome FROM DadosExames;');
+                    while ($row = $examData->fetchArray(SQLITE3_ASSOC)) {
+                        echo '<option value="' . $row["id"] . '">' . $row["nome"] . '</option>';
+                    }
+                    unset($row);
+                    ?>
+                </select>
+                <label for="datahorario">Data e horário do Exame:</label>
+                <input type="datetime-local" min="2022-12-5T00:00:00" name="datahorario" id="datahorario">
 
-            <button type="submit">Agendar</button>
-        </form>
+                <button type="submit">Agendar</button>
+            </form>
+        <?php endif; ?>
     </div>
     <?php
     include './footer_inc.php';

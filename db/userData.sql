@@ -30,7 +30,7 @@ CREATE TABLE DadosExames (
     preco REAL NOT NULL,
     descricao TEXT NOT NULL
 );
--- Sceduling table
+-- Scheduling table
 CREATE TABLE Agendamento (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     exame_id INTEGER NOT NULL,
@@ -218,15 +218,37 @@ VALUES (
 --     JOIN Users ON Users.id = Agendamento.paciente_id
 --     AND Agendamento.horario = "2022-12-29T13:30";
 ----------------------------------------------------------------
-SELECT Users.id
-FROM Agendamento
-    JOIN Users ON Users.id = 0
-    AND Users.id = Agendamento.paciente_id
-    AND Agendamento.horario = "2022-12-29T13:30";
-SELECT Funcionarios.id
-FROM Agendamento
-    LEFT JOIN Funcionarios ON Funcionarios.id = 1
-    AND Funcionarios.id = Agendamento.enfermeiro_id
-    AND Agendamento.horario = "2022-12-29T13:30"
-    JOIN Users ON Funcionarios.id = Users.id
-    AND Funcionarios.type = "enfermeiro";
+-- SELECT Users.id
+-- FROM Agendamento
+--     JOIN Users ON Users.id = 0
+--     AND Users.id = Agendamento.paciente_id
+--     AND Agendamento.horario = "2022-12-29T13:30";
+-- SELECT Funcionarios.id
+-- FROM Agendamento
+--     LEFT JOIN Funcionarios ON Funcionarios.id = 1
+--     AND Funcionarios.id = Agendamento.enfermeiro_id
+--     AND Agendamento.horario = "2022-12-29T13:30"
+--     JOIN Users ON Funcionarios.id = Users.id
+--     AND Funcionarios.type = "enfermeiro";
+--------------------------------------------------------------
+-- SELECT Funcionarios.id,
+--     Users.nomeReal
+-- FROM Funcionarios
+--     JOIN Users ON Funcionarios.id = Users.id
+--     AND Funcionarios.type = "enfermeiro"
+--     LEFT JOIN Agendamento ON Funcionarios.id = Agendamento.enfermeiro_id
+-- EXCEPT
+-- SELECT Funcionarios.id,
+--     Users.nomeReal
+-- FROM Agendamento
+--     LEFT JOIN Funcionarios ON Funcionarios.id = Agendamento.enfermeiro_id
+--     AND Agendamento.horario = "2022-12-29T12:30"
+--     JOIN Users ON Funcionarios.id = Users.id
+--     AND Funcionarios.type = "enfermeiro";
+-- SELECT DadosExames.nome,
+--     Agendamento.horario,
+--     Users.nomeReal
+-- FROM Agendamento
+--     JOIN Users ON Users.id = 0
+--     AND Users.id = Agendamento.paciente_id
+--     JOIN DadosExames ON DadosExames.id = Agendamento.exame_id;
