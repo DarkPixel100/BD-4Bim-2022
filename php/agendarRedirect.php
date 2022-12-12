@@ -16,7 +16,11 @@
     <select name="enfermeiro" id="enfermeiro">
         <?php
         $nurseCheck = $db->querySingle('SELECT Funcionarios.id, Users.nomeReal FROM Funcionarios JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro" LEFT JOIN Agendamento ON Funcionarios.id = Agendamento.enfermeiro_id EXCEPT SELECT Funcionarios.id, Users.nomeReal FROM Agendamento LEFT JOIN Funcionarios ON Funcionarios.id = Agendamento.enfermeiro_id AND Agendamento.horario = "' . $_POST["datahorario"] . '" JOIN Users ON Funcionarios.id = Users.id AND Funcionarios.type = "enfermeiro";', true);
-        echo '<option value="' . $nurseCheck["id"] . '"></option>';
+        if (is_array($nurseCheck) && sizeof($nurseCheck) > 0) {
+            echo '<option value="' . $nurseCheck["id"] . '"></option>';
+        } else {
+            echo '<option value="-1"></option>';
+        }
         $db->close();
         ?>
     </select>
