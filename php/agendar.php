@@ -16,7 +16,7 @@
     <div id="wrapper">
         <h2>Agendar:</h2>
         <?php
-        if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Agendar');
+        if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=agendar');
         if (!empty($_POST)) {
             $db = new SQLite3('../db/userData.db');
             $patientCheck = $db->querySingle('SELECT Users.id FROM Agendamento JOIN Users ON Users.id = ' . $_POST["paciente"] . ' AND (Users.id = Agendamento.paciente_id OR Users.id = Agendamento.enfermeiro_id) AND Agendamento.horario = "' . $_POST["datahorario"] . '";', true);

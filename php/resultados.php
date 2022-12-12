@@ -17,7 +17,7 @@
         <div id="resultados">
             <h2>Resultados:</h2>
             <?php
-            if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=Resultados');
+            if (!isset($_SESSION["startTime"])) header('Location: ./login.php?r=resultados');
             ?>
             <?php
             if ($_SESSION["currentUserType"] == '' && filetype('../resultados/resultados' . $_SESSION['currentUserID'] . '.pdf')) : ?>

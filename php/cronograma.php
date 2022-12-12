@@ -15,7 +15,7 @@
     <?php include './header_inc.php'; ?>
     <div id="wrapper" style="justify-content: start;">
         <?php
-        if (!isset($_SESSION["startTime"])) header("Location: ./login.php?r=Cronograma");
+        if (!isset($_SESSION["startTime"])) header("Location: ./login.php?r=cronograma");
         ?>
         <h2>Cronograma:</h2>
         <?php
