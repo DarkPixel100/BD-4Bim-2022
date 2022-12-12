@@ -61,12 +61,12 @@
             <form id="signupContainer" class="boundBox" action="" method="POST">
                 <label for="user">
                     Usuário:
-                    <input type="text" placeholder="Nome de usuário" name="user" maxlength="15" required>
+                    <input type="text" placeholder="Nome de usuário" name="user" minlength="5" maxlength="15" required>
                 </label>
 
                 <label for="nomeReal">
                     Nome completo:
-                    <input type="text" placeholder="Nome completo" name="nomeReal" maxlength="50" oninput="
+                    <input type="text" placeholder="Nome completo" name="nomeReal" minlength="8" maxlength="50" oninput="
                 if (this['value'].length > 0) {
                     this['value'] = this['value'][0].toUpperCase() + this['value'].slice(1,this['value'].length);
                 }   
@@ -98,12 +98,12 @@
 
                 <label for="senha">
                     Senha:
-                    <input type="password" placeholder="Senha" name="senha" maxlength="20" required>
+                    <input type="password" placeholder="Senha" name="senha" minlength="8" maxlength="20" required>
                 </label>
 
                 <label for="senha2">
                     Repita a senha:
-                    <input type="password" placeholder="Repita a senha" name="senha2" maxlength="20" required>
+                    <input type="password" placeholder="Repita a senha" name="senha2" minlength="8" maxlength="20" required>
                 </label>
 
                 <label for="dataNascimento">

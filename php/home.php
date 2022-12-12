@@ -55,7 +55,7 @@
                         </div>
                     </a>
         </div>
-        <?php if (!$_SESSION["currentUserType"] == 'enfermeiro') : ?>
+        <?php if ($_SESSION["currentUserType"] != 'enfermeiro') : ?>
             <h2>Sempre perto de você</h2>
             <p>Estamos evoluindo sempre, focados no bem estar dos nossos clientes, buscando proporcionar o carinho e conforto a que todos merecem</p>
             <div id="fotosLocal">
@@ -88,28 +88,28 @@
                 if (is_array($row) && sizeof($row) > 0) {
                     $row[2] = date('d/m/Y / H:i', strtotime($row[2]));
                     echo '
-            <table id="tabelaexame">
-                <thead>
-                    <tr>
-                        <th>Exame:</th>
-                        <th>Data/Horário:</th>
-                        <th>Paciente:</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><p>' . $row[1] . '</p></td>
-                        <td><p>' . $row[2] . '</p></td>
-                        <td><p>' . $row[3] . '</p></td>
-                        <td>
-                            <form action="" method="post">
-                                <button type="submit">Desmarcar</button>
-                                <input hidden name="examId" value="' . $row[0] . '">
-                            </form>
-                        </td>
-                    </tr>
-            ';
+                    <table id="tabelaexame">
+                        <thead>
+                            <tr>
+                                <th>Exame:</th>
+                                <th>Data/Horário:</th>
+                                <th>Paciente:</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><p>' . $row[1] . '</p></td>
+                                <td><p>' . $row[2] . '</p></td>
+                                <td><p>' . $row[3] . '</p></td>
+                                <td>
+                                    <form action="" method="post">
+                                        <button type="submit">Desmarcar</button>
+                                        <input hidden name="examId" value="' . $row[0] . '">
+                                    </form>
+                                </td>
+                            </tr>
+                    ';
                     while ($row = $results->fetchArray(SQLITE3_NUM)) {
                         echo '<tr id="' . $row[0] . '">';
                         $row[2] = date('d/m/Y / H:i', strtotime($row[2]));
